@@ -1,0 +1,15 @@
+.lamp {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border: 1px solid #000;
+}
+.red {
+    background-color: #ff0000;
+}
+.yellow {
+    background-color: #ffee00;
+}
+.rounded {
+    border-radius: 50%;
+}
