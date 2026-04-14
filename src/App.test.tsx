@@ -91,3 +91,42 @@ describe("App component - Hours Lamp", () => {
     expect(secondTimeBlockLamps[3]).not.toHaveClass("red");
   });
 });
+describe("App component - Minutes Lamp", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("renders the App component and checks if the minute section have correct number of lamps", () => {
+    render(<App />);
+    const minSection = screen.getByRole("minutes");
+    const timeBlocks = minSection.querySelectorAll("[role='time-block']");
+    expect(timeBlocks[0].querySelectorAll("[role='lamp']").length).toBe(11); // First TimeBlock should have 11 lamps
+    expect(timeBlocks[1].querySelectorAll("[role='lamp']").length).toBe(4); // Second TimeBlock should have 4 lamps
+  });
+
+  it("renders the App component and checks if the minute section have correct number of lit lamps", () => {
+    const testDate = new Date(2026, 0, 1, 12, 34, 0);
+    vi.setSystemTime(testDate);
+    render(<App />);
+    const minSection = screen.getByRole("minutes");
+    const timeBlocks = minSection.querySelectorAll("[role='time-block']");
+    const yellowlitLamps = timeBlocks[0].querySelectorAll(".lamp.yellow");
+    const redLitLamps = timeBlocks[0].querySelectorAll(".lamp.red");
+
+    // - (5-minute blocks) to have 4 yellow lit lamps (20 minutes) and 2 red lit lamps (10 minutes)
+    expect(yellowlitLamps.length).toBe(4);
+    expect(redLitLamps.length).toBe(2);
+
+    // - (1-minute blocks) to have 4 lit lamps (4 minutes)
+    const secondTimeBlockLamps =
+      timeBlocks[1].querySelectorAll("[role='lamp']");
+    expect(secondTimeBlockLamps[0]).toHaveClass("yellow");
+    expect(secondTimeBlockLamps[1]).toHaveClass("yellow");
+    expect(secondTimeBlockLamps[2]).toHaveClass("yellow");
+    expect(secondTimeBlockLamps[3]).toHaveClass("yellow");
+  });
+});

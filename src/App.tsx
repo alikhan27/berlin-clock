@@ -7,8 +7,13 @@ import { getBerlinClockData } from "./utils/BerlinClock";
 
 function App() {
   const time = useClock();
-  const { isSecondsEven, fiveHoursCount, singleHoursCount } =
-    getBerlinClockData(time);
+  const {
+    isSecondsEven,
+    fiveHoursCount,
+    singleHoursCount,
+    fiveMinutesCount,
+    singleMinutesCount,
+  } = getBerlinClockData(time);
   return (
     <>
       <h1>Berlin Clock</h1>
@@ -25,6 +30,15 @@ function App() {
               lamps={GRID_SIZES.FOUR}
               litLamps={index === 0 ? fiveHoursCount : singleHoursCount}
               litColor={LAMP_CLASSES.RED}
+            />
+          ))}
+        </section>
+        <section role="minutes">
+          {[fiveMinutesCount, singleMinutesCount].map((count, index) => (
+            <TimeBlock
+              lamps={index === 0 ? GRID_SIZES.ELEVEN : GRID_SIZES.FOUR}
+              litLamps={count}
+              litColor={LAMP_CLASSES.YELLOW}
             />
           ))}
         </section>
