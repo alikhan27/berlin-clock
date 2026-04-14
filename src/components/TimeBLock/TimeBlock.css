@@ -1,4 +1,16 @@
 .time-block {
     display: flex;
+    align-items: center;
+    margin-bottom: 5px;
     gap: 5px;
+    width: 100%;
+}
+.time-block .lamp {
+    flex: 1;
+}
+.time-block .lamp:first-child {
+    border-radius: 20px 0 0 20px;
+}
+.time-block .lamp:last-child {
+    border-radius: 0 20px 20px 0;
 }
