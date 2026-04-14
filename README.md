@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# Berlin Clock
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based implementation of the traditional Berlin Clock (Mengenlehreuhru), which uses illuminated colored blocks to display the current time.
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Real-time Updates: Updates every second using React hooks.
+2. Accurate Logic: Calculates hours and minutes based on the standard Berlin Clock algorithm.
 
-## React Compiler
+### Pre-requsites:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Make sure latest NodeJS is installed.
 
-## Expanding the ESLint configuration
+## To run the Application follow the below steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Clone the Repo
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+git clone https://github.com/alikhan27/berlin-clock.git
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Navigate to the directory:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+cd berlin-clock
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+npm install
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+### Run the app:
+
+npm start
+
+# How it works:
+
+1. Top Circle: Blinking yellow light for even seconds
+2. Top Row (5-hour steps): 4 red lamps.
+3. Second Row (1-hour steps): 4 red lamps.
+4. Third Row (5-minute steps): 11 lamps (8 yellow lamps & every 3rd block red lamps).
+5. Bottom Row (1-minute steps): 4 yellow lamps.
+
+# Screenshot:
+<div align="center">
+<img width="519" height="355" alt="image" src="https://github.com/user-attachments/assets/b48b935a-6f9a-43c8-aa4c-1da2e0547e07" />
+</div>
+
