@@ -130,3 +130,19 @@ describe("App component - Minutes Lamp", () => {
     expect(secondTimeBlockLamps[3]).toHaveClass("yellow");
   });
 });
+
+describe("App component - Time Section", () => {
+  it("renders the App component and checks if the time section is present", () => {
+    render(<App />);
+    const timerSection = screen.getByRole("time");
+    expect(timerSection).toBeInTheDocument();
+  });
+
+  it("renders the App component and checks if the time section displays the correct time", () => {
+    const testDate = new Date(2026, 0, 1, 12, 34, 6);
+    vi.setSystemTime(testDate);
+    render(<App />);
+    const timerSection = screen.getByRole("time");
+    expect(timerSection).toHaveTextContent("12:34:06");
+  });
+});

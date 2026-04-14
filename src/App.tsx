@@ -13,6 +13,9 @@ function App() {
     singleHoursCount,
     fiveMinutesCount,
     singleMinutesCount,
+    hours,
+    minutes,
+    seconds,
   } = getBerlinClockData(time);
   return (
     <>
@@ -41,6 +44,9 @@ function App() {
               litColor={LAMP_CLASSES.YELLOW}
             />
           ))}
+        </section>
+        <section role="time">
+          {hours}:{minutes}:{seconds}
         </section>
       </div>
     </>
